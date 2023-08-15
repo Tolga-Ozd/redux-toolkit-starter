@@ -19,7 +19,7 @@ const handleLogout = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="secondary">
+      <AppBar position="static" color="success">
         <Toolbar>
           <Typography
             variant="h6"
