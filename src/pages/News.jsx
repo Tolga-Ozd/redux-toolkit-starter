@@ -7,6 +7,10 @@ import Typography from "@mui/material/Typography";
 import { CardMedia } from "@mui/material";
 
 const News = () => {
+
+
+
+  
   return (
     <>
       <h1>NEWS</h1>
