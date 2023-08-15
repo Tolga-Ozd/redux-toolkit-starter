@@ -5,10 +5,11 @@ const initialState = {
 
 }
 
+//slice ile bir global state in hem aciton typleri hem aciton creater fonksiyonları hemde reduceri tek bir hamlede oluşturabiliriz.
 const authSlice = createSlice({
-    name:"auth" , 
-    initialState, 
-    reducers:{
+    name:"auth" ,   //?bu action type i oluşturur
+    initialState,  //?burası state in başlangıç değeri için 
+    reducers:{ //? action creater fonks. ve reducer için 
         setUser:(state , action) => {
             state.user = action.payload
         },
@@ -18,4 +19,8 @@ const authSlice = createSlice({
     },
 })
 
+//!olusan action fonksiyonları sliceAdi.acitions dan destructure edilerek export edilir.
  export const {setUser , clearUser} = authSlice.actions
+
+ //!Yazılan slice in adı reducerı sliceAdi.reducer şeklinde export edilir.
+ export default authSlice.reducer
