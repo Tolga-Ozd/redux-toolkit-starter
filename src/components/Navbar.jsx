@@ -27,7 +27,7 @@ const handleLogout = () => {
             sx={{ flexGrow: 1, cursor: "pointer" }}
             onClick={() => navigate("/")}
           >
-            Manhattan News
+            Global News
           </Typography>
 
           {user?.email && <Button color="inherit" onClick={handleLogout}>Logout</Button> }
