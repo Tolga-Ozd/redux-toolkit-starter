@@ -5,12 +5,25 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CardMedia } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { clearNews, getNews } from "../features/newsSlice";
 
 const News = () => {
 
+  const dispatch = useDispatch()
 
+  //!global state ten verileri çekme
+  const news = useSelector((state) =>state.api.news)
 
-  
+  useEffect(()=>{
+    dispatch(getNews())
+
+    return () => {
+      dispatch(clearNews())
+    }
+  }, [])
+
   return (
     <>
       <h1>NEWS</h1>
@@ -21,7 +34,7 @@ const News = () => {
         justifyContent="space-evenly"
         flexWrap="wrap"
       >
-        {[1, 2, 3].map((item, index) => (
+        {news?.map((item, index) => (
           <Card sx={{ maxWidth: 345, m: 5, maxHeight: 600 }} key={index}>
             <CardMedia
               component="img"
