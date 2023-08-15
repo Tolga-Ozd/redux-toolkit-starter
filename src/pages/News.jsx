@@ -10,15 +10,15 @@ import { useEffect } from "react";
 import { clearNews, getNews } from "../features/newsSlice";
 
 const News = () => {
-
   const dispatch = useDispatch()
 
   //!global state ten verileri çekme
-  const news = useSelector((state) =>state.api.news)
+  const {news , error } = useSelector((state) =>state.api)
 
   useEffect(()=>{
     dispatch(getNews())
 
+    //!news componenti DOM tree den kaldırılınca state deki bilgileri temizle
     return () => {
       dispatch(clearNews())
     }
@@ -27,6 +27,14 @@ const News = () => {
   return (
     <>
       <h1>NEWS</h1>
+
+      {error && (
+        <Typography variant="h3" color={"error"}>
+            News can not be fetched!
+        </Typography>
+      )}
+
+
       <Box
         xs={{ d: "flex" }}
         display="flex"
